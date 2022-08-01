@@ -22,9 +22,12 @@ try {
     if (empty($data)) {
         throw new Exception("Empty data. Check the source file.");
     }
+
     $i = 0;
+
     foreach ($data as $entry => $value) {
 
+        $i++;
 
         if ($i == 0) {
             continue;
@@ -32,10 +35,6 @@ try {
         if (!is_array($entry) || empty($entry[0])) {
             continue;
         }
-
-        $i++;
-
-        print_r($entry);
 
         $sql = "UPDATE 
         `pf_products` 
@@ -56,7 +55,7 @@ try {
         //echo "Обновлено строк: $affectedRowsNumber";
     }
     $i--;
-    print "\n\n $i rows were successfully processed";
+    print "\n\n $i rows were successfully processed ";
 } catch (Exception $e) {
     print "Error: " . $e->getMessage();
 }
